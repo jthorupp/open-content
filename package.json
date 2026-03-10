@@ -1,0 +1,15 @@
+{
+  "name": "@jthorupp/open-content",
+  "version": "1.0.0",
+  "description": "To be written",
+  "license": "ISC",
+  "author": "Jari Thorup Palo",
+  "type": "module",
+  "main": "index.ts",
+  "scripts": {
+    "test": "test"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.3"
+  }
+}

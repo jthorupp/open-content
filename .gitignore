@@ -1,0 +1,15 @@
+# Default GitHub ignore file
+node_modules
+dist
+coverage
+.DS_Store
+
+# OSX-specific files
+.DS_Store
+
+# IDE-specific files
+.vscode
+.idea
+.sublime-workspace
+.sublime-project
+.app
