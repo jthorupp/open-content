@@ -7,8 +7,9 @@ This is a TypeScript library that provides a unified interface to multiple CMS p
 ## Project Structure
 
 - `src/`: Source code files
-  - `core/`: Core interfaces and classes
-  - `providers/`: Mock CMS providers
+  - `interfaces/`: CMS provider interfaces
+  - `core/`: Core classes like ProviderRegistry
+  - `providers/`: Mock CMS providers (StrapiProvider, ContentfulProvider)
 - `tsconfig.json`: TypeScript configuration
 - `package.json`: Project dependencies
 - `main.ts`: Example usage
@@ -24,12 +25,18 @@ npm install
 2. Run the example:
 
 ```sh
-npx tsgo main.ts
+npx tsgo src/main.ts
 ```
 
 ## Core Interface
 
-The `CMSProvider` interface defines methods for interacting with CMS providers.
+The `CMSProvider` interface defines methods for interacting with CMS providers:
+
+- `getContentById<T>(type: string, id: string): Promise<T | null>`
+- `listContent<T>(type: string, query?: Record<string, any>): Promise<T[]>`
+- `createContent<T>(type: string, data: T): Promise<T>`
+- `updateContent<T>(type: string, id: string, data: Partial<T>): Promise<T>`
+- `deleteContent(type: string, id: string): Promise<void>`
 
 ## Provider Registry
 
@@ -43,6 +50,15 @@ Mock providers (`StrapiProvider` and `ContentfulProvider`) are implemented to si
 
 The `main.ts` file demonstrates registering providers, switching between them, and using the unified interface to fetch and create content.
 
-```
+```typescript
+// Register providers
+registry.register("strapi", new StrapiProvider());
+registry.register("contentful", new ContentfulProvider());
 
+// Set active provider
+registry.setActive("strapi");
+
+// Perform content operations consistently across providers
+const article = await registry.getContentById<Article>("Article", "1");
+const articles = await registry.listContent<Article>("Article");
 ```
