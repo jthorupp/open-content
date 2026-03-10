@@ -25,7 +25,7 @@ npm install
 2. Run the example:
 
 ```sh
-npx tsgo src/main.ts
+npm run build
 ```
 
 ## Core Interface

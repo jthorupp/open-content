@@ -4,10 +4,11 @@
   "description": "To be written",
   "license": "ISC",
   "author": "Jari Thorup Palo",
-  "type": "module",
+  "type": "commonjs",
   "main": "index.ts",
   "scripts": {
-    "test": "test"
+    "build": "tsgo -b",
+    "start": "node ./dist/src/main.js"
   },
   "devDependencies": {
     "typescript": "^5.9.3"
