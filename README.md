@@ -1,3 +1,5 @@
+# 🚧 **This project is a work in progress** 🚧
+
 # Open Content CMS Abstraction Library
 
 This is a TypeScript library that provides a unified interface to multiple CMS providers, similar to how OpenFeature abstracts feature flag providers.
